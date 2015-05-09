@@ -1,35 +1,76 @@
 <section data-ng-controller="HomeController">
 
-    <div id="container">
-        <form id="searchForm" data-ng-submit="search()">
-            <fieldset>
-                <select  data-ng-model="country">
-                    <option>Country</option>
-                </select>
-                <select data-ng-change="" data-ng-model="state">
-                    <option>Select</option>
-                </select>
-                <input id="city" type="text" data-ng-model="city" placeholder="City"/>
-                <input id="search_query" type="text" data-ng-model="search_query" placeholder="Keyword" />
-                <input type="submit" value="Search" id="submitButton" />
-            </fieldset>
-        </form>
+    <div id="container" class="container">
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <form class="form-inline" data-ng-submit="search()">
+                    <legend>Search sindodo...</legend>
+                    <div class="form-group" >
+                        <select  data-ng-model="country" class="form-control">
+                            <option>--Country--</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select  data-ng-model="state" class="form-control">
+                            <option>--State--</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select  data-ng-model="category" class="form-control">
+                            <option>--Category--</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+
+                        <input type="text" class="form-control col-md-5"  placeholder="Enter keywords here" data-ng-model="keywords">
+                    </div>
+
+                    <button type="submit" class="btn btn-info " ng-hide="searching"> Search</button>
+                    <button type="submit" class="btn btn-info " ng-show="searching"><i class="fa fa-refresh fa-spin"></i> Searching...</button>
+                </form>
+            </div>
+            <div class="panel-body list-group">
+                <div ng-repeat="post in postings" class="list-group-item">
+                    <h4 class="text-info"><a href="{{post.external_url}}">{{post.heading}}</a></h4>
+                    <span class="">{{post.external_url}}</span>
+                    <p class="text--muted">{{post.body | cut:true:100:' ...'}}</p>
+                </div>
+
+
+                <div class="alert " role="alert" data-ng-show="visible">
+                          <h4>How it works</h4>
+                    <hr>
+                    <p style="line-height: 2.2em; margin-top: 20px;">
+                        Like many African countries, Nigeria’s informal sector takes the lead when it comes to creating jobs.
+
+                        But in some formal sectors, Nigeria is bypassing developed countries when it comes to compensating employees.
+
+                        For the first time in 2014, Nigeria was listed among the highest paying contract jobs in oil and gas sector worldwide, according to oil and gas manpower provider, Swift Worldwide Resources.
+
+                        In September, Swift CEO Tobias Read, said, “Nigeria has seen unprecedented growth in (oil and gas) industry activity, and workers there are compensated for the risks that come with working in the more dangerous areas, accounting for the increase in salary ranges. Salaries in the U.S. are climbing, but salaries in,..emerging markets (such as Nigeria) are climbing faster.”
+
+                        Nigeria’s National Bureau of Statistics reported a 5.1 percent drop in new formal jobs created in the fourth quarter of 2014 compared to the previous quarter, CNBCAfrica reported.
+
+                        Data from the International Labour Organisation and National Bureau of Statistics for the first quarter of 2013 showed that 53 percent of new jobs in Nigeria had come from the informal sector, which is made up of more than 17 million businesses and enterprises. By comparison, the formal sector was responsible for 41 percent of new jobs, while the public sector generated 6 percent of new additions to Nigeria’s job market, BusinessDay reported.
+
+                        Salary Explorer reports that the average annual salary in Nigeria for the country’s top 62 highest-paying jobs is 7,577,058 naira, or $38,066US.
+
+                        We’ve listed 17 best-paying jobs in Nigeria. Check them out here.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+
+
     </div>
 
     <hr>
-    <div class="container">
-        <div ng-repeat="post in postings">
-            <h4><a href="{{post.external_url}}">{{post.heading}}</a></h4>
-            <span>{{post.external_url}}</span>
-            <p>{{post.body | cut:true:100:' ...'}}</p>
-        </div>
 
-        <!--<ul>-->
-            <!--<li >-->
-                <!--<span>{{result.title}}</span>-->
-                <!--<span>{{result.link}}</span>-->
-            <!--</li>-->
-        <!--</ul>-->
-    </div>
 
 </section>
