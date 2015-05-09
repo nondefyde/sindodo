@@ -1,0 +1,35 @@
+<section data-ng-controller="HomeController">
+
+    <div id="container">
+        <form id="searchForm" data-ng-submit="search()">
+            <fieldset>
+                <select  data-ng-model="country">
+                    <option>Country</option>
+                </select>
+                <select data-ng-change="" data-ng-model="state">
+                    <option>Select</option>
+                </select>
+                <input id="city" type="text" data-ng-model="city" placeholder="City"/>
+                <input id="search_query" type="text" data-ng-model="search_query" placeholder="Keyword" />
+                <input type="submit" value="Search" id="submitButton" />
+            </fieldset>
+        </form>
+    </div>
+
+    <hr>
+    <div class="container">
+        <div ng-repeat="post in postings">
+            <h4><a href="{{post.external_url}}">{{post.heading}}</a></h4>
+            <span>{{post.external_url}}</span>
+            <p>{{post.body | cut:true:100:' ...'}}</p>
+        </div>
+
+        <!--<ul>-->
+            <!--<li >-->
+                <!--<span>{{result.title}}</span>-->
+                <!--<span>{{result.link}}</span>-->
+            <!--</li>-->
+        <!--</ul>-->
+    </div>
+
+</section>
