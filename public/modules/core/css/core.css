@@ -1,18 +1,15 @@
 
-body{
-
-    /*background-color: #F7F7F9;*/
-}
 html {
     font-family: 'Crimson Text', serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+
 }
 .navbar{
-    border-top:7px solid #3F7DA1;
+    border-top:15px solid #3F7DA1;
 }
 .content {
-    margin-top: 100px;
+    margin-top: 15px;
 }
 .undecorated-link:hover {
     text-decoration: none;
@@ -30,6 +27,16 @@ html {
 body.ng-cloak
 {
     display: block;
+}
+
+.custom-colour{
+    color:#3F7DA1;
+}
+.list-container-scrollable{
+    height: 500px;
+    max-height: 500px;
+    overflow-y: scroll;
+    -ms-overflow-y: scroll;
 }
 
 

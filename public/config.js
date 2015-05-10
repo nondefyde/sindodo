@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'sindodo';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils','ui.bootstrap.pagination','ui.scrollToTopWhen'];
+	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils','ui.bootstrap.pagination'];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
@@ -21,3 +21,4 @@ var ApplicationConfiguration = (function() {
 		registerModule: registerModule
 	};
 })();
+

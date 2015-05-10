@@ -30,15 +30,16 @@
                                data-ng-model="keywords">
                     </div>
 
-                    <button type="submit" class="btn btn-info " ng-hide="searching"> Search</button>
+
+                    <button type="submit" class="btn btn-info " ng-hide="searching"><span class="fa fa-search"></span> Search</button>
                     <button type="submit" class="btn btn-info " ng-show="searching"><i
                             class="fa fa-refresh fa-spin"></i> Searching...
                     </button>
                 </form>
             </div>
-            <div class="panel-body list-group" scroll-to-top-when="items_changed">
-                <div ng-repeat="post in postings" class="list-group-item">
-                    <h4 class="text-info"><a href="{{post.external_url}}">{{post.heading}}</a></h4>
+            <div class="panel-body list-group "  ng-class="visible ? '' : 'list-container-scrollable'">
+                <div ng-repeat="post in postings" class="list-group-item" id="item-{{$index}}">
+                    <h4 class="text-info"><a href="{{post.external_url}}"><span class="fa fa-th-list"></span> {{post.heading}}</a></h4>
                     <span class="">{{post.external_url}}</span>
                     <p class="text--muted">{{post.body | cut:true:100:' ...'}}</p>
                     <p>
@@ -47,10 +48,10 @@
                         </span>
                     </p>
                 </div>
-                <div ng-if="postings.length > 0">
-                    <hr />
-                    <pagination ng-click="setPage(bigCurrentPage)" total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
-                    <pre>Page: {{bigCurrentPage}} / {{numPages | number:0}}</pre>
+                <div ng-if="postings.length > 0" class="row">
+
+                    <pagination ng-click="setPage(bigCurrentPage); goUp()" total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm pull-right" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+                    <pre class="col-md-2">Page: {{bigCurrentPage}} of {{numPages | number:0}}</pre>
                 </div>
 
                 <div class="alert " role="alert" data-ng-show="visible">

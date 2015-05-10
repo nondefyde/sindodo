@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$http','$log',
-    function ($scope, Authentication, $http,$log) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$http','$log','$location','$anchorScroll',
+    function ($scope, Authentication, $http,$log,$location,$anchorScroll) {
         // This provides Authentication context.
         $scope.authentication = Authentication;
         $scope.visible = true;
@@ -47,8 +47,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
                     page : (pageNo - 1)
                 }
             }).success(function (response) {
-                $scope.postings = response.postings;
-                $scope.visible = false;
+                              $scope.visible = false;
                 $scope.searching = false;
 
                 $scope.totalItems = response.num_matches;
@@ -58,6 +57,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
                 $scope.maxSize = 10;
                 $scope.bigTotalItems = response.num_matches / 10 ;
                 $scope.bigCurrentPage = response.next_page;
+
 
             }).error(function (error) {
                 $log.log('Error ' +error);
@@ -70,6 +70,21 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
             alert('i got here 2');
             $log.log('Page changed to: ' + $scope.currentPage);
         };
+
+        $scope.goUp = function() {
+            // set the location.hash to the id of
+            // the element you wish to scroll to.
+            $location.hash('item-0');
+
+            // call $anchorScroll()
+            $anchorScroll();
+        };
+
+
+
+
+
+
 
     }
 ]);
