@@ -6,5 +6,6 @@ module.exports = function(app) {
 	app.route('/').get(core.index);
 
     app.route('/search').get(core.search);
+    app.route('/nextsearch').get(core.nextsearch);
 
 };
