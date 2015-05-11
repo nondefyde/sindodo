@@ -7,6 +7,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
         $scope.authentication = Authentication;
         $scope.visible = true;
         $scope.searching = false;
+        $scope.detailVisibility = false;
 
         // Create new Buzzrequest
         $scope.search = function () {
@@ -74,10 +75,15 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
         $scope.goUp = function() {
             // set the location.hash to the id of
             // the element you wish to scroll to.
-            $location.hash('item-0');
+            $location.hash('top');
 
             // call $anchorScroll()
             $anchorScroll();
+        };
+
+        $scope.showDetails = function()
+        {
+            $scope.detailVisibility = true;
         };
 
 

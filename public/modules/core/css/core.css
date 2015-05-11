@@ -5,6 +5,9 @@ html {
     -webkit-text-size-adjust: 100%;
 
 }
+body{
+    padding-top: 70px;
+}
 .navbar{
     border-top:15px solid #3F7DA1;
 }
@@ -32,12 +35,8 @@ body.ng-cloak
 .custom-colour{
     color:#3F7DA1;
 }
-.list-container-scrollable{
-    height: 500px;
-    max-height: 500px;
-    overflow-y: scroll;
-    -ms-overflow-y: scroll;
-}
+
+
 
 
 

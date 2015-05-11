@@ -1,15 +1,15 @@
 <section data-ng-controller="HomeController">
 
-    <div id="container" class="container">
+    <div id="top" class="container">
 
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <form class="form-inline" data-ng-submit="search()">
+                <form class="form-inline" data-ng-submit="search()" >
                     <legend>Search sindodo...</legend>
                     <div class="form-group">
-                        <select data-ng-model="country" class="form-control">
-                            <option>--Country--</option>
+                        <select data-ng-model="country" class="form-control" bootstrap-select auto-width="true">
+                            <option>Country</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -33,20 +33,23 @@
 
                     <button type="submit" class="btn btn-info " ng-hide="searching"><span class="fa fa-search"></span> Search</button>
                     <button type="submit" class="btn btn-info " ng-show="searching"><i
-                            class="fa fa-refresh fa-spin"></i> Searching...
+                            class="fa fa-refresh fa-spin"></i> Getting results...
                     </button>
                 </form>
             </div>
-            <div class="panel-body list-group "  ng-class="visible ? '' : 'list-container-scrollable'">
+            <div class="panel-body list-group "  id="item-list">
                 <div ng-repeat="post in postings" class="list-group-item" id="item-{{$index}}">
-                    <h4 class="text-info"><a href="{{post.external_url}}"><span class="fa fa-th-list"></span> {{post.heading}}</a></h4>
-                    <span class="">{{post.external_url}}</span>
-                    <p class="text--muted">{{post.body | cut:true:100:' ...'}}</p>
-                    <p>
+                    <h4 class="text-info"><a href="#" ng-click="showDetails()"><span class="fa fa-caret-right" ng-hide="detailVisibility"></span> <span class="fa fa-caret-down" ng-show="detailVisibility"></span> {{post.heading}}</a>  <a href="{{post.external_url}}" class="pull-right label label-info"><i class="fa fa-arrow-circle-right"></i> Go to car</a></h4>
+                   <section ng-show="detailVisibility">
+                       <span class="">{{post.external_url}}</span>
+                       <p class="text--muted">{{post.body | cut:true:100:' ...'}}</p>
+                       <p>
                         <span ng-repeat="(key, value) in post.annotations" class="badge">
                         {{key}}:{{ value }}
                         </span>
-                    </p>
+                       </p>
+                   </section>
+
                 </div>
                 <div ng-if="postings.length > 0" class="row">
 
@@ -55,37 +58,46 @@
                 </div>
 
                 <div class="alert " role="alert" data-ng-show="visible">
-                    <h4>How it works</h4>
+                      <h3 class="lead text-center">A fast rising platform to receive search results and notifications from craiglist</h3>
                     <hr>
-                    <p style="line-height: 2.2em; margin-top: 20px;">
-                        Like many African countries, Nigeria’s informal sector takes the lead when it comes to creating
-                        jobs.
 
-                        But in some formal sectors, Nigeria is bypassing developed countries when it comes to
-                        compensating employees.
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+                    </span>
+                            <h4 class="service-heading">Search sindodo</h4>
+                            <p class="text-muted">
+                                Use our search tool to search for your favourite car on craiglist, u can use filters to narrow your search,sign up to access our premium services.
+                            </p>
+                        </div>
 
-                        For the first time in 2014, Nigeria was listed among the highest paying contract jobs in oil and
-                        gas sector worldwide, according to oil and gas manpower provider, Swift Worldwide Resources.
+                        <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-plus-square fa-stack-1x fa-inverse"></i>
+                    </span>
+                            <h4 class="service-heading"><i class="fa fa-bell-o"></i> Create a noty</h4>
+                            <p class="text-muted">Can't find what you're looking for on craigist? Sign up or Sign in if you're a registered user to create a notifier for the
+                           car you're searching for.. </p>
+                        </div>
 
-                        In September, Swift CEO Tobias Read, said, “Nigeria has seen unprecedented growth in (oil and
-                        gas) industry activity, and workers there are compensated for the risks that come with working
-                        in the more dangerous areas, accounting for the increase in salary ranges. Salaries in the U.S.
-                        are climbing, but salaries in,..emerging markets (such as Nigeria) are climbing faster.”
 
-                        Nigeria’s National Bureau of Statistics reported a 5.1 percent drop in new formal jobs created
-                        in the fourth quarter of 2014 compared to the previous quarter, CNBCAfrica reported.
+                        <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-mobile fa-stack-1x fa-inverse"></i>
+                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                    </span>
+                            <h4 class="service-heading">We Notify you</h4>
+                            <ul class="text-muted">
+                                <p>..and once such car is available on craiglist, we message you via your email and mobile, it doesn't matter if you're online or offline at this stage.</p>
 
-                        Data from the International Labour Organisation and National Bureau of Statistics for the first
-                        quarter of 2013 showed that 53 percent of new jobs in Nigeria had come from the informal sector,
-                        which is made up of more than 17 million businesses and enterprises. By comparison, the formal
-                        sector was responsible for 41 percent of new jobs, while the public sector generated 6 percent
-                        of new additions to Nigeria’s job market, BusinessDay reported.
+                            </ul>
+                        </div>
+                    </div>
 
-                        Salary Explorer reports that the average annual salary in Nigeria for the country’s top 62
-                        highest-paying jobs is 7,577,058 naira, or $38,066US.
-
-                        We’ve listed 17 best-paying jobs in Nigeria. Check them out here.
-                    </p>
                 </div>
 
             </div>
