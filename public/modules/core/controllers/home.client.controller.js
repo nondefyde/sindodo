@@ -27,7 +27,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
                 $scope.currentPage = response.next_page + 1;
 
 
-                $scope.maxSize = 10;
+                $scope.maxSize = 5;
                 $scope.bigTotalItems = response.num_matches / 10 ;
                 $scope.bigCurrentPage = response.next_page;
 
@@ -88,9 +88,22 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
 
 
+        $scope.getAnotation = function(annotation){
 
+            var filtered_aannotation = {
+                make : annotation.make,
+                type : annotation.type,
+                year : annotation.year,
+                drive : annotation.drive,
+                color : annotation.paint_color,
+                mileage : annotation.mileage
 
+            };
 
+            // i will use lodash to remove keys whose values are null;
+
+            return filtered_aannotation;
+        };
 
     }
 ]);

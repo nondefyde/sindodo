@@ -5,7 +5,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <form class="form-inline" data-ng-submit="search()" >
+                <form class="form-inline" data-ng-submit="search()">
                     <legend>Search sindodo...</legend>
                     <div class="form-group">
                         <select data-ng-model="country" class="form-control" bootstrap-select auto-width="true">
@@ -31,34 +31,45 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-info " ng-hide="searching"><span class="fa fa-search"></span> Search</button>
+                    <button type="submit" class="btn btn-info " ng-hide="searching"><span class="fa fa-search"></span>
+                        Search
+                    </button>
                     <button type="submit" class="btn btn-info " ng-show="searching"><i
                             class="fa fa-refresh fa-spin"></i> Getting results...
                     </button>
                 </form>
             </div>
-            <div class="panel-body list-group "  id="item-list">
+            <div class="panel-body list-group " id="item-list">
                 <div ng-repeat="post in postings" class="list-group-item" id="item-{{$index}}">
-                    <h4 class="text-info"><a href="#" ng-click="showDetails()"><span class="fa fa-caret-right" ng-hide="detailVisibility"></span> <span class="fa fa-caret-down" ng-show="detailVisibility"></span> {{post.heading}}</a>  <a href="{{post.external_url}}" class="pull-right label label-info"><i class="fa fa-arrow-circle-right"></i> Go to car</a></h4>
-                   <section ng-show="detailVisibility">
-                       <span class="">{{post.external_url}}</span>
-                       <p class="text--muted">{{post.body | cut:true:100:' ...'}}</p>
-                       <p>
-                        <span ng-repeat="(key, value) in post.annotations" class="badge">
-                        {{key}}:{{ value }}
+                    <h4 class="text-info"><a href="#" ng-click="showDetails()"><span class="fa fa-caret-right"
+                                                                                     ng-hide="detailVisibility"></span>
+                        <span class="fa fa-caret-down" ng-show="detailVisibility"></span> {{post.heading}}</a> <a
+                            href="{{post.external_url}}" class="pull-right label label-info"><i
+                            class="fa fa-arrow-circle-right"></i> Go to car</a></h4>
+                    <section ng-show="detailVisibility">
+                        <span class="">{{post.external_url}}</span>
+
+                        <p class="text--muted">{{post.body | cut:true:100:' ...'}}</p>
+
+                        <p>
+                        <span ng-repeat="(key, value) in getAnotation(post.annotations)" class="badge">
+                            {{key}}:{{ value }}
                         </span>
-                       </p>
-                   </section>
+                        </p>
+                    </section>
 
                 </div>
-                <div ng-if="postings.length > 0" class="row">
-
-                    <pagination ng-click="setPage(bigCurrentPage); goUp()" total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm pull-right" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
-                    <pre class="col-md-2">Page: {{bigCurrentPage}} of {{numPages | number:0}}</pre>
+                <div ng-if="postings.length > 0" class="row center-block">
+                    <pagination ng-click="setPage(bigCurrentPage); goUp()" total-items="bigTotalItems"
+                                ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true"
+                                rotate="false" num-pages="numPages"></pagination>
+                    <pre class="col-md-12">Page: {{bigCurrentPage}} of {{numPages | number:0}}</pre>
                 </div>
+
 
                 <div class="alert " role="alert" data-ng-show="visible">
-                      <h3 class="lead text-center">A fast rising platform to receive search results and notifications from craiglist</h3>
+                    <h3 class="lead text-center">A fast rising platform to receive search results and notifications from
+                        craiglist</h3>
                     <hr>
 
                     <div class="row text-center">
@@ -68,8 +79,10 @@
                         <i class="fa fa-search fa-stack-1x fa-inverse"></i>
                     </span>
                             <h4 class="service-heading">Search sindodo</h4>
+
                             <p class="text-muted">
-                                Use our search tool to search for your favourite car on craiglist, u can use filters to narrow your search,sign up to access our premium services.
+                                Use our search tool to search for your favourite car on craiglist, u can use filters to
+                                narrow your search,sign up to access our premium services.
                             </p>
                         </div>
 
@@ -79,8 +92,10 @@
                         <i class="fa fa-plus-square fa-stack-1x fa-inverse"></i>
                     </span>
                             <h4 class="service-heading"><i class="fa fa-bell-o"></i> Create a noty</h4>
-                            <p class="text-muted">Can't find what you're looking for on craigist? Sign up or Sign in if you're a registered user to create a notifier for the
-                           car you're searching for.. </p>
+
+                            <p class="text-muted">Can't find what you're looking for on craigist? Sign up or Sign in if
+                                you're a registered user to create a notifier for the
+                                car you're searching for.. </p>
                         </div>
 
 
@@ -92,7 +107,8 @@
                     </span>
                             <h4 class="service-heading">We Notify you</h4>
                             <ul class="text-muted">
-                                <p>..and once such car is available on craiglist, we message you via your email and mobile, it doesn't matter if you're online or offline at this stage.</p>
+                                <p>..and once such car is available on craiglist, we message you via your email and
+                                    mobile, it doesn't matter if you're online or offline at this stage.</p>
 
                             </ul>
                         </div>
