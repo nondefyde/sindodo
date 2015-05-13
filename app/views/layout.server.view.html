@@ -52,6 +52,45 @@
 		</section>
 	</section>
 
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<span class="copyright">Copyright &copy; <a href="http://sindodo.com">Sindodo</a> 2015</span>
+				</div>
+				<div class="col-md-4">
+					<ul class="list-inline social-buttons">
+						<li><a href="http://twitter.com/benmalcom"><i class="fa fa-twitter"></i></a>
+						</li>
+						<li><a href="http://facebook.com/nappyboy65"><i class="fa fa-facebook"></i></a>
+						</li>
+						<li><a href="http://goo.gl/6fUdXB"><i class="fa fa-linkedin"></i></a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-md-4">
+					<form class="form-inline" >
+
+						<div class="form-group">
+							<label class="sr-only" >Email Address</label>
+							<input type="email" class="form-control"  placeholder="Enter email for newsletters">
+						</div>
+
+
+						<button type="submit" class="btn btn-info" > <i class="fa fa-newspaper-o"></i></span>
+							Submit
+						</button>
+
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</footer>
+
+
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
 		var user = {{ user | json | safe }};

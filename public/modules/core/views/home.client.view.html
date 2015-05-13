@@ -41,15 +41,10 @@
             </div>
             <div class="panel-body list-group " id="item-list">
                 <div ng-repeat="post in postings" class="list-group-item" id="item-{{$index}}">
-                    <h4 class="text-info"><a href="#" ng-click="showDetails()"><span class="fa fa-caret-right"
-                                                                                     ng-hide="detailVisibility"></span>
-                        <span class="fa fa-caret-down" ng-show="detailVisibility"></span> {{post.heading}}</a> <a
-                            href="{{post.external_url}}" class="pull-right label label-info"><i
-                            class="fa fa-arrow-circle-right"></i> Go to car</a></h4>
-                    <section ng-show="detailVisibility">
-                        <span class="">{{post.external_url}}</span>
+                    <h4 class="text-info"><a href="{{post.external_url}}" ng-click="showDetails()"><span class="fa fa-caret-square-o-right"></span> {{post.heading}}</a> </h4>
+                    <section class="well well-sm">
 
-                        <p class="text--muted">{{post.body | cut:true:100:' ...'}}</p>
+                        <p class="text--muted"><strong class="label label-info"><span class="fa fa-info-circle"></span> SPECS: </strong> &nbsp; &nbsp; {{post.body | cut:true:120:' ...'}}</p>
 
                         <p>
                         <span ng-repeat="(key, value) in getAnotation(post.annotations)" class="badge">
@@ -68,7 +63,7 @@
 
 
                 <div class="alert " role="alert" data-ng-show="visible">
-                    <h3 class="lead text-center">A fast rising platform to receive search results and notifications from
+                    <h3 class="lead text-center text-success" >A fast rising platform to receive search results and notifications from
                         craiglist</h3>
                     <hr>
 
@@ -95,7 +90,7 @@
 
                             <p class="text-muted">Can't find what you're looking for on craigist? Sign up or Sign in if
                                 you're a registered user to create a notifier for the
-                                car you're searching for.. </p>
+                                car you're searching for. </p>
                         </div>
 
 
@@ -107,7 +102,7 @@
                     </span>
                             <h4 class="service-heading">We Notify you</h4>
                             <ul class="text-muted">
-                                <p>..and once such car is available on craiglist, we message you via your email and
+                                <p>Once a car that matches your choice is available on craiglist, we message you via your email and
                                     mobile, it doesn't matter if you're online or offline at this stage.</p>
 
                             </ul>
