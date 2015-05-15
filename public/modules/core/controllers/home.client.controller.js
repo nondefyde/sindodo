@@ -28,9 +28,9 @@ angular.module('core')
                     $scope.currentPage = response.next_page + 1;
 
 
-                    $scope.maxSize = 5;
-                    $scope.bigTotalItems = response.num_matches / 10;
-                    $scope.bigCurrentPage = response.next_page;
+                    $scope.maxSize = 10;
+                    $scope.bigTotalItems = (response.num_matches / 10) ;
+                    $scope.bigCurrentPage = response.num_matches ;
 
 
                 }).error(function (error) {
@@ -92,13 +92,16 @@ angular.module('core')
             $scope.getAnotation = function (annotation) {
 
                 var filtered_aannotation = {
+                    caption:annotation.title_status,
+                    state:annotation.source_state,
                     make: annotation.make,
                     type: annotation.type,
                     year: annotation.year,
                     drive: annotation.drive,
                     color: annotation.paint_color,
-                    mileage: $filter('number')(annotation.mileage,0)
-
+                    mileage: $filter('number')(annotation.mileage,0),
+                    phone: annotation.phone,
+                    transmission : annotation.transmission
                 };
 
                 var newObject = {};
