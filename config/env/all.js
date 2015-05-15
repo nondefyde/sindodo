@@ -15,9 +15,12 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-				'public/lib/font-awesome/css/font-awesome.css'
+				'public/lib/font-awesome/css/font-awesome.css',
+                'cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css'
 			],
 			js: [
+                'cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js',
+                'cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
@@ -26,8 +29,7 @@ module.exports = {
 				'public/lib/angular-sanitize/angular-sanitize.js', 
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-				'public/lib/angular-bootstrap-select/build/angular-bootstrap-select.min.js'
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
 
 
 

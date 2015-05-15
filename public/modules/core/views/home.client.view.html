@@ -1,36 +1,40 @@
 <section data-ng-controller="HomeController">
 
     <div id="top" class="container">
-
-
         <div class="panel panel-default">
             <div class="panel-heading">
                 <form class="form-inline" data-ng-submit="search()">
                     <legend>Search sindodo...</legend>
+
                     <div class="form-group">
-                        <select data-ng-model="country" class="form-control" bootstrap-select auto-width="true">
-                            <option>Country</option>
+                        <select  data-ng-model="status" ng-options="stat.name for stat in status track by stat.value" class="form-control">
+                            <option value="">--Status--</option>
+                            <!--<option ng-repeat="stat in status" value="{{stat.value}}">{{stat.name}}</option>-->
                         </select>
                     </div>
                     <div class="form-group">
-                        <select data-ng-model="state" class="form-control">
-                            <option>--State--</option>
+                        <input type="text" class="form-control col-md-5" placeholder="Location"
+                               data-ng-model="location">
+                    </div>
+                    <div class="form-group">
+                        <select data-ng-model="years" class="form-control" ng-options="yr.year for yr in years track by yr.year">
+                            <option value="" >--Year--</option>
                         </select>
                     </div>
-
                     <div class="form-group">
-                        <select data-ng-model="category" class="form-control">
-                            <option>--Category--</option>
+                        <select data-ng-model="make" class="form-control" >
+                            <option>--Make--</option>
                         </select>
                     </div>
-
                     <div class="form-group">
-
-                        <input type="text" class="form-control col-md-5" placeholder="Enter keywords here"
+                        <select data-ng-model="model" class="form-control" >
+                            <option>--Model--</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control col-md-6" placeholder="Enter keywords here"
                                data-ng-model="keywords">
                     </div>
-
-
                     <button type="submit" class="btn btn-info " ng-hide="searching"><span class="fa fa-search"></span>
                         Search
                     </button>
@@ -41,10 +45,10 @@
             </div>
             <div class="panel-body list-group " id="item-list">
                 <div ng-repeat="post in postings" class="list-group-item" id="item-{{$index}}">
-                    <h4 class="text-info"><a href="{{post.external_url}}" ng-click="showDetails()"><span class="fa fa-caret-square-o-right"></span> {{post.heading}}</a> </h4>
+                    <h4 class="text-info"><a href="{{post.external_url}}" ng-click="showDetails()"><span class="fa fa-automobile"></span> {{post.heading}}</a> </h4>
                     <section class="well well-sm">
 
-                        <p class="text--muted"><strong class="label label-info"><span class="fa fa-info-circle"></span> SPECS: </strong> &nbsp; &nbsp; {{post.body | cut:true:120:' ...'}}</p>
+                        <p class="text--muted text-primary"><strong class="label label-info"><span class="fa fa-info-circle"></span> DESCRIPTION: </strong> &nbsp; &nbsp; {{post.body | cut:true:120:' ...'}}</p>
 
                         <p>
                         <span ng-repeat="(key, value) in getAnotation(post.annotations)" class="badge">
@@ -55,7 +59,7 @@
 
                 </div>
                 <div ng-if="postings.length > 0" class="row center-block">
-                    <pagination ng-click="setPage(bigCurrentPage); goUp()" total-items="bigTotalItems"
+                    <pagination ng-click="setPage(bigCurrentPage);" total-items="bigTotalItems"
                                 ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true"
                                 rotate="false" num-pages="numPages"></pagination>
                     <pre class="col-md-12">Page: {{bigCurrentPage}} of {{numPages | number:0}}</pre>

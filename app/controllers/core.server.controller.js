@@ -11,6 +11,7 @@ var _ = require('lodash');
 
 
 
+
 exports.index = function(req, res) {
 	res.render('index', {
 		user: req.user || null,
@@ -62,11 +63,10 @@ exports.search = function(req, res) {
     console.log('search main_options: ' + prettyjson.render(req.query, {noColor: false}));
 
     var search_query = req.query.search_query;
+    var status = req.query.search_query;
     var options = {
         'body': search_query
     };
-
-
 
     requestPostings(options, res);
 };
@@ -90,5 +90,3 @@ exports.nextsearch = function(req, res) {
     requestPostings(options, res);
 
 };
-
-

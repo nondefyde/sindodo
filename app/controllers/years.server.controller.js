@@ -5,106 +5,105 @@
  */
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
-	Article = mongoose.model('Article'),
+	Year = mongoose.model('Year'),
 	_ = require('lodash');
 
 /**
- * Create a article
+ * Create a Year
  */
 exports.create = function(req, res) {
-	var article = new Article(req.body);
-	article.user = req.user;
-
-	article.save(function(err) {
+	var year = new Year(req.body);
+	year.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(article);
+			res.jsonp(year);
 		}
 	});
 };
 
-
 /**
- * Show the current article
+ * Show the current Year
  */
 exports.read = function(req, res) {
-	res.json(req.article);
+	res.jsonp(req.year);
 };
 
 /**
- * Update a article
+ * Update a Year
  */
 exports.update = function(req, res) {
-	var article = req.article;
+	var year = req.year ;
 
-	article = _.extend(article, req.body);
+	year = _.extend(year , req.body);
 
-	article.save(function(err) {
+	year.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(article);
+			res.jsonp(year);
 		}
 	});
 };
 
 /**
- * Delete an article
+ * Delete an Year
  */
 exports.delete = function(req, res) {
-	var article = req.article;
+	var year = req.year ;
 
-	article.remove(function(err) {
+	year.remove(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(article);
+			res.jsonp(year);
 		}
 	});
 };
 
 /**
- * List of Articles
+ * List of Years
  */
 exports.list = function(req, res) {
-	Article.find().sort('-created').populate('user', 'displayName').exec(function(err, articles) {
+	Year.find().sort('year').exec(function(err, years) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(articles);
+			res.jsonp(years);
 		}
 	});
 };
 
 /**
- * Article middleware
+ * Year middleware
  */
-exports.articleByID = function(req, res, next, id) {
-	Article.findById(id).populate('user', 'displayName').exec(function(err, article) {
+exports.yearByID = function(req, res, next, id) { 
+	Year.findById(id).exec(function(err, year) {
 		if (err) return next(err);
-		if (!article) return next(new Error('Failed to load article ' + id));
-		req.article = article;
+		if (! year) return next(new Error('Failed to load Year ' + id));
+		req.year = year ;
 		next();
 	});
 };
 
 /**
- * Article authorization middleware
+ * Year authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.article.user.id !== req.user.id) {
-		return res.status(403).send({
-			message: 'User is not authorized'
-		});
+	if (req.year.user.id !== req.user.id) {
+		return res.status(403).send('User is not authorized');
 	}
 	next();
 };
+
+
+
+

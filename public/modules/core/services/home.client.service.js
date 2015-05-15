@@ -1,33 +1,21 @@
 'use strict';
-
 /**
- * Created by Okafor on 09/05/2015.
+ * Created by Okafor on 13/05/2015.
  */
 
-//angular.module('core').factory('HomeService', ['$resource',
-//    function ($resource) {
-//
-//    }
-//]).factory('SearchResultObject', function () {
-//    var search_result = [
-//        {
-//            "title": "Emmanuel",
-//            "link": "Emmanule_link"
-//        },
-//        {
-//            "title": "Felix",
-//            "link": "Felix_link"
-//        },
-//        {
-//            "title": "Martins",
-//            "link": "Martins_link"
-//        }
-//    ];
-//
-//    return {
-//        get: function(){
-//            return search_result;
-//        }
-//    }
-//
-//});
+angular.module('core')
+    .factory('Status', ['$resource', function ($resource) {
+
+        return $resource('/status');
+
+    }])
+    .factory('Search', ['$resource', function ($resource) {
+
+        return $resource('/status');
+
+    }])
+    .factory('Year', ['$resource', function ($resource) {
+
+        return $resource('/years');
+
+    }]);
