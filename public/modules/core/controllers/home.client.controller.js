@@ -2,8 +2,8 @@
 
 
 angular.module('core')
-    .controller('HomeController', ['$scope', 'Authentication', '$http', '$log', '$location', '$anchorScroll', 'Status','$filter','Year',
-        function ($scope, Authentication, $http, $log, $location, $anchorScroll, Status,$filter,Year) {
+    .controller('HomeController', ['$scope', 'Authentication', '$http', '$log', '$location', '$anchorScroll','$filter','CarService',
+        function ($scope, Authentication, $http, $log, $location, $anchorScroll,$filter,CarService) {
             // This provides Authentication context.
             $scope.authentication = Authentication;
             $scope.visible = true;
@@ -122,8 +122,19 @@ angular.module('core')
                 return newObject;
             };
 
-            $scope.status = Status.query();
+            $scope.status = CarService.Status.query();
 
-            $scope.years = Year.query();
+            $scope.years =  CarService.Years.query();
+
+
+            $scope.makesFromYear = function()
+            {
+                $scope.makes = CarService.MakesByYear.query({year:$scope.year._id});
+            };
+            $scope.modelsFromMake = function()
+            {
+                $scope.models = CarService.ModelsByMake.query({year:$scope.make.year,make:$scope.make._id});
+                console.log($scope.models);
+            };
         }
     ]);

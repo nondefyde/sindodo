@@ -14,6 +14,11 @@ module.exports = function(app) {
 		.put(users.requiresLogin, models.hasAuthorization, models.update)
 		.delete(users.requiresLogin, models.hasAuthorization, models.delete);
 
+
+	app.route('/api/models/:year/:make')
+		.get(models.modelByYear);
+
+
 	// Finish by binding the Model middleware
 	app.param('modelId', models.modelByID);
 };

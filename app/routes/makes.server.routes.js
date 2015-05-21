@@ -14,6 +14,10 @@ module.exports = function(app) {
 		.put(users.requiresLogin, makes.hasAuthorization, makes.update)
 		.delete(users.requiresLogin, makes.hasAuthorization, makes.delete);
 
+	app.route('/api/makes/:year')
+		.get(makes.makesByYear);
+
 	// Finish by binding the Make middleware
+
 	app.param('makeId', makes.makeByID);
 };

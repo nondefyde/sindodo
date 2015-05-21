@@ -97,6 +97,20 @@ exports.modelByID = function(req, res, next, id) {
 	});
 };
 
+ exports.modelByYear = function(req,res)
+ {
+	 Model.find({year:req.params.year,make:req.params.make},function(err,models){
+		 if (err) {
+			 return res.status(400).send({
+				 message: errorHandler.getErrorMessage(err)
+			 });
+		 } else {
+			 res.jsonp(models);
+		 }
+	 });
+ };
+
+
 /**
  * Model authorization middleware
  */

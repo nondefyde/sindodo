@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+	ObjectId = mongoose.Types.ObjectId,
 	errorHandler = require('./errors.server.controller'),
 	Make = mongoose.model('Make'),
 	_ = require('lodash');
@@ -87,12 +88,27 @@ exports.list = function(req, res) {
 /**
  * Make middleware
  */
+
+
 exports.makeByID = function(req, res, next, id) { 
 	Make.findById(id).populate('year', 'year').exec(function(err, make) {
 		if (err) return next(err);
 		if (! make) return next(new Error('Failed to load Make ' + id));
 		req.make = make ;
 		next();
+	});
+};
+
+
+exports.makesByYear = function(req,res){
+	Make.find({year:req.params.year},function(err,makes){
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(makes);
+		}
 	});
 };
 

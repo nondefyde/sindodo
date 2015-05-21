@@ -22,7 +22,7 @@ var MakeSchema = new Schema({
 	},
 	year: {
 		type: Schema.ObjectId,
-		ref: 'User'
+		ref: 'Year'
 	}
 });
 

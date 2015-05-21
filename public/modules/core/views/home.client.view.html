@@ -7,33 +7,31 @@
                     <legend>Search sindodo...</legend>
 
                     <div class="form-group">
-                        <select  data-ng-model="status" ng-options="stat.name for stat in status track by stat.value" class="form-control">
+                        <select  data-ng-model="carStatus" ng-options="stat.name for stat in status track by stat.value" class="form-control">
                             <option value="">--Status--</option>
                             <!--<option ng-repeat="stat in status" value="{{stat.value}}">{{stat.name}}</option>-->
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control col-md-5" placeholder="Location"
-                               data-ng-model="location">
+                        <input type="text" class="form-control col-md-5" placeholder="Location" data-ng-model="location">
                     </div>
                     <div class="form-group">
-                        <select data-ng-model="years" class="form-control" ng-options="yr.year for yr in years track by yr.year">
+                        <select data-ng-model="year" class="form-control" data-ng-options="yr.year for yr in years track by yr.year" data-ng-change="makesFromYear()">
                             <option value="" >--Year--</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <select data-ng-model="make" class="form-control" >
-                            <option>--Make--</option>
+                        <select data-ng-model="make" class="form-control" data-ng-options="mk.make for mk in makes track by mk.make" data-ng-change="modelsFromMake()">
+                            <option value="">--Make--</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <select data-ng-model="model" class="form-control" >
-                            <option>--Model--</option>
+                        <select data-ng-model="model" class="form-control" data-ng-options="md.model for md in models track by md.model">
+                            <option value="">--Model--</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control col-md-6" placeholder="Enter keywords here"
-                               data-ng-model="keywords">
+                        <input type="text" class="form-control col-md-6" placeholder="Enter keywords here" data-ng-model="keywords">
                     </div>
                     <button type="submit" class="btn btn-info " ng-hide="searching"><span class="fa fa-search"></span>
                         Search

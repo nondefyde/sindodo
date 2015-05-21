@@ -3,19 +3,17 @@
  * Created by Okafor on 13/05/2015.
  */
 
-angular.module('core')
-    .factory('Status', ['$resource', function ($resource) {
+angular.module('core').factory('CarService', ['$resource', function ($resource) {
 
-        return $resource('/status');
+        return{
 
-    }])
-    .factory('Search', ['$resource', function ($resource) {
+            Status : $resource('/status'),
+            Years :  $resource('/years'),
+            Makes :  $resource('/makes'),
+            Models : $resource('/models'),
+            MakesByYear : $resource('/api/makes/:year',{},{get:{method:'GET',isArray:true}}),
+            ModelsByMake : $resource('/api/models/:year/:make',{},{get:{method:'GET',isArray:true}})
 
-        return $resource('/status');
-
-    }])
-    .factory('Year', ['$resource', function ($resource) {
-
-        return $resource('/years');
+        };
 
     }]);
