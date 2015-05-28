@@ -134,7 +134,6 @@ angular.module('core')
             $scope.modelsFromMake = function()
             {
                 $scope.models = CarService.ModelsByMake.query({year:$scope.make.year,make:$scope.make._id});
-                console.log($scope.models);
             };
         }
     ]);
